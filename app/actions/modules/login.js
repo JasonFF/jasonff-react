@@ -31,6 +31,6 @@ function resLogining() {
 export function reqLogin(para) {
   return dispatch => {
     dispatch(resLogining())
-    fetchPost('agents/login', para).then(res=>res.json()).then(json=>dispatch(resLogin(json)))
+    fetchPost('login', para).then(res=>res.json()).then(json=>dispatch(resLogin(json)))
   }
 }

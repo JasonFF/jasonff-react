@@ -30,10 +30,21 @@ module.exports = {
             this.plugin("done", function(statsData) {
                 var stats = statsData.toJson();
                 console.log(stats.assetsByChunkName.main)
+                var bundlejs,maincss;
+                var mains = stats.assetsByChunkName.main;
+                for (var i = 0; i < mains.length; i++) {
+                  if (/^(bundle).+(js)$/.test(mains[i])) {
+                    bundlejs = mains[i]
+                  }
+                  if (/^(main).+(css)$/.test(mains[i])) {
+                    maincss = mains[i]
+                  }
+                }
+                console.log(maincss,bundlejs)
                 if (!stats.errors.length) {
                     var htmlFileName = "index.html";
                     var html = fs.readFileSync(path.join('./static/temp', htmlFileName), "utf8");
-                    var htmlOutput = html.replace('bundle.js', stats.assetsByChunkName.main[0]).replace('main.css', stats.assetsByChunkName.main[1]);
+                    var htmlOutput = html.replace('bundle.js', bundlejs).replace('main.css', maincss);
                     fs.writeFileSync(path.join('./', htmlFileName), htmlOutput);
                 }
             });

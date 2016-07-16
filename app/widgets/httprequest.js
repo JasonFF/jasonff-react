@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const rootUrl = __PRODUCTION__?'http://api.91souban.com/':'http://api.91souban.com/';
+const rootUrl = 'http://localhost:3030/';
 
 let commonFetch = (method, url, parameters, version, options)=> {
     const urlPath = String(url);

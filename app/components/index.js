@@ -1,2 +1,3 @@
 
-module.exports = require('./Navbar/Navbar');
+export LoginInput from './LoginInput/LoginInput';
+export Navbar from './Navbar/Navbar';

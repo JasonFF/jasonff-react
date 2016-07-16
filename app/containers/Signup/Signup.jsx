@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 
 const localStorage = localStorage?localStorage:{};
 
-export default class Login extends Component {
+export default class Signup extends Component {
 
   componentWillMount() {
     this.setState({
@@ -76,7 +76,7 @@ export default class Login extends Component {
             </Row>
             <Row key='item5'>
               <Col className={style.remember} span={16} offset={4}>
-                记住我好吗？<Switch checkedChildren="好" unCheckedChildren="滚" defaultChecked={remember} onChange={this.remember.bind(this)} />
+                记住我好吗？<Switch checkedChildren="开" unCheckedChildren="关" defaultChecked={remember} onChange={this.remember.bind(this)} />
               </Col>
             </Row>
           </QueueAnim>
@@ -86,18 +86,18 @@ export default class Login extends Component {
   }
 }
 
-Login.defaultProps = {
+Signup.defaultProps = {
   user: {
     loading: false
   }
 };
-Login.proptpyes = {
+Signup.proptpyes = {
   user: PropTypes.object
 };
-Login.contextTypes = {
+Signup.contextTypes = {
   router: PropTypes.object
 }
 
 export default connect(state=>({
   user: state.user
-}),{reqLogin})(Login)
+}),{reqLogin})(Signup)

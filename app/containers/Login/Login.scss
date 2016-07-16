@@ -9,15 +9,14 @@
 }
 .title {
   text-align: center;
-  color: $mainBlue;
+  color: $fontWhite;
 }
 .loginbox {
   height: 500px;
-  background-color: #fff;
+  background-color: rgba(0,0,0,0.6);
   border-radius: 5px
 }
 .form {
-  padding: 20px 0;
   text-align: center;
   & > div {
     margin-top: 40px;
@@ -25,6 +24,7 @@
 }
 .logo {
   width: 100px;
+  border-radius: 50px;
 }
 .loginBtn {
   width: 100%;
@@ -32,7 +32,7 @@
   font-size: 1.6rem;
 }
 .remember {
-  color: $mainBlueL;
+  color: $fontWhiteL;
   font-size: 1.4rem;
   text-align: right;
 }
