@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 {})
 export default class Navbar extends Component {
   render() {
-    const style = require('./NavBar.scss');
+    const style = require('./Navbar.scss');
     return (
       <nav className={style.nav}>
         <div className={style.logo}>
