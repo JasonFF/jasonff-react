@@ -5,63 +5,49 @@ import Animate from 'rc-animate';
 import {LoginInput} from 'components';
 
 import {getFormValue} from 'widgets';
-import {reqLogin} from 'actions';
+import {reqSignup} from 'actions';
 import {connect} from 'react-redux';
 
 const localStorage = localStorage?localStorage:{};
 
 export default class Signup extends Component {
-
-  componentWillMount() {
-    this.setState({
-      remember: localStorage['remember']
-    })
-  }
   submit(e) {
     e.preventDefault();
     let formvalue = getFormValue(e.target);
-    formvalue['version'] = 1;
-    this.props.reqLogin(formvalue);
-    if (this.state.remember) {
-      localStorage['phoneNum'] = e.target[0].value;
-      localStorage['remember'] = true;
-    }else {
-      localStorage['phoneNum'] = '';
-      localStorage['remember'] = '';
-    }
-  }
-  remember(checked) {
-    this.setState({
-      remember: checked
-    });
+    this.props.reqSignup(formvalue);
   }
   componentWillReceiveProps(nextProps) {
-    const {status} = nextProps.user;
-    if (status == 1403) {
-      Modal.error({title:'账号或者密码错误。。'})
-    };
-    if (status == 1) {
-      message.success('登录成功！')
-      console.log(this)
-      this.context.router.push('/statistics')
+    const {status,msg} = nextProps.signup;
+    switch (status) {
+      case 0:
+        Modal.error({title:msg})
+        break;
+      case 1:
+        message.success('注册成功！');
+        this.context.router.push('/login');
+        break;
+      case 2:
+        message.error('该邮箱已经注册了')
+        break;
+      case 3:
+        Modal.error({title: "密码两次输入不对"});
+        break;
     }
   }
   render() {
-    const style = require('./Login.scss');
-    const {phoneNum, remember} = localStorage;
+    const style = require('./Signup.scss');
     return (
       <div className={style.container} style={{backgroundImage:'url(/static/image/warcraft.jpg)'}}>
         <Col xs={24} sm={{span:12, offset:6}} lg={{span: 10, offset: 7}} className={style.loginbox}>
           <QueueAnim component={Form} onSubmit={(e)=>this.submit(e)} className={style.form} type="bottom" leaveReverse>
             <Row key='item1'>
               <Col span={16} offset={4}>
-                <img className={style.logo} src="/static/image/jf.png" alt=""/>
-                <h2 className={style.title}>What do you want to do?</h2>
+                <h2 className={style.title}>How do you do.</h2>
               </Col>
             </Row>
             <Row key='item2'>
               <Col span={16} offset={4}>
-                <LoginInput type='email' name="email" defaultValue={phoneNum} />
+                <LoginInput type='email' name="email" />
               </Col>
             </Row>
             <Row key='item3'>
@@ -71,12 +57,12 @@ export default class Signup extends Component {
             </Row>
             <Row key='item4'>
               <Col span={16} offset={4}>
-                <Button className={style.loginBtn} loading={this.props.user.loading} type='primary' htmlType='submit'>登录</Button>
+                <LoginInput type='password' maxLength='30' name="password" />
               </Col>
             </Row>
             <Row key='item5'>
-              <Col className={style.remember} span={16} offset={4}>
-                记住我好吗？<Switch checkedChildren="开" unCheckedChildren="关" defaultChecked={remember} onChange={this.remember.bind(this)} />
+              <Col span={16} offset={4}>
+                <Button className={style.loginBtn} loading={this.props.signup.loading} type='primary' htmlType='submit'>注册</Button>
               </Col>
             </Row>
           </QueueAnim>
@@ -87,17 +73,17 @@ export default class Signup extends Component {
 }
 
 Signup.defaultProps = {
-  user: {
+  signup: {
     loading: false
   }
 };
 Signup.proptpyes = {
-  user: PropTypes.object
+  signup: PropTypes.object
 };
 Signup.contextTypes = {
   router: PropTypes.object
 }
 
 export default connect(state=>({
-  user: state.user
-}),{reqLogin})(Signup)
+  signup: state.signup
+}),{reqSignup})(Signup)

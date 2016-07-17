@@ -4,6 +4,7 @@ import {
     App,
     Page1,
     Login,
+    Signup,
     Statistics,
     InsidePage
   } from 'containers';
@@ -45,6 +46,7 @@ export default (store) => {
       </Route>
       <Route path='/page1' component={Page1}></Route>
       <Route path='/login' component={Login}></Route>
+      <Route path='/signup' component={Signup}></Route>
     </Route>
   );
 };
