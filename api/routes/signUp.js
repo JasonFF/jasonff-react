@@ -21,24 +21,25 @@ router.post('/',function(req, res){
       status: 3,
       msg: 'password error'
     })
+  }else {
+    var newUser = new User({
+      password: password,
+      email: req.body.email
+    });
+    newUser.get(newUser.email, function(err, user){
+      if (user) {
+        res.send({status:2,msg:'repeated'})
+      }else {
+        newUser.save(function(err, result){
+          if (err) {
+            res.send({status:0,msg:err})
+          }else {
+            res.send({status:1,msg:'success'})
+          }
+        })
+      }
+    })
   }
-  var newUser = new User({
-    password: password,
-    email: req.body.email
-  });
-  newUser.get(newUser.email, function(err, user){
-    if (user) {
-      res.send({status:2,msg:'repeated'})
-    }else {
-      newUser.save(function(err, result){
-        if (err) {
-          res.send({status:0,msg:err})
-        }else {
-          res.send({status:1,msg:'success'})
-        }
-      })
-    }
-  })
 })
 
 module.exports = router;

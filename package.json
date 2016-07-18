@@ -10,7 +10,7 @@
     "npm": "^3.0.0"
   },
   "scripts": {
-    "dev": "concurrently 'npm run webpack-dev' 'npm run api-dev'",
+    "dev": "npm run webpack-dev",
     "api": "better-npm-run start-api",
     "api-dev": "better-npm-run start-api-dev",
     "server": "better-npm-run start-server",
