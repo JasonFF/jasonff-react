@@ -20,19 +20,14 @@ router.post('/', function(req, res) {
     email: req.body.email
   });
   newUser.get(newUser.email, function(err, user) {
-    if (user) {
-      if (newUser.password.toString() == user.password.buffer.toString()) {
-        req.session["user"] = user;
-        res.send({status:1,msg:'success',session:req.session.user});
-      }else {
-        res.send({status:0,msg:'密码错误'})
-      }
-    } else {
-      res.send({
-        status: 3,
-        msg: 'none'
-      })
+    if (!user) {
+      return res.send({status:3,msg:'not exist'})
     }
+    if (newUser.password.toString() != user.password.buffer.toString()) {
+      return res.send({status:0,msg:'wrong password',session:req.session})
+    }
+    req.session.user = user;
+    res.send({status:1,msg:'success',session:req.session.user._id});
   })
 })
 

@@ -30,7 +30,8 @@ User.prototype.get = function(email, callback) {
 User.prototype.save = function(callback) {
 	var user = {
 		password: this.password,
-		email: this.email
+		email: this.email,
+		signupTime: new Date().getTime()
 	};
 	mongodb.open(function(err, db) {
 		if (err) {
@@ -53,5 +54,32 @@ User.prototype.save = function(callback) {
 		});
 	});
 };
+
+User.prototype.update = function(callback) {
+	var user = {
+		email: this.email
+	};
+	mongodb.open(function(err, db) {
+		if (err) {
+			return callback(err);
+		};
+		db.collection('users', function(err, collection) {
+			if (err) {
+				mongodb.close();
+				return callback(err);
+			};
+			collection.updateOne(user, {$set:{
+				loginTime: new Date().getTime()
+			}}, function(err, data) {
+				mongodb.close();
+				if (err) {
+					return callback(err);
+				};
+				callback(null, data)
+			});
+		});
+	});
+};
+
 
 module.exports = User;

@@ -29,7 +29,6 @@ module.exports = {
         function() {
             this.plugin("done", function(statsData) {
                 var stats = statsData.toJson();
-                console.log(stats.assetsByChunkName.main)
                 var bundlejs,maincss;
                 var mains = stats.assetsByChunkName.main;
                 for (var i = 0; i < mains.length; i++) {
@@ -40,7 +39,6 @@ module.exports = {
                     maincss = mains[i]
                   }
                 }
-                console.log(maincss,bundlejs)
                 if (!stats.errors.length) {
                     var htmlFileName = "index.html";
                     var html = fs.readFileSync(path.join('./static/temp', htmlFileName), "utf8");

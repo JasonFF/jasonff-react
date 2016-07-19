@@ -1,12 +1,12 @@
 var path = require('path');
 
 var express = require('express');
-var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+
 var routes = require('./routes/index');
 var settings = require('./settings.js');
 
@@ -31,6 +31,8 @@ app.use(cookieParser());
 app.use(session({
   secret: settings.cookieSecret,
   key: settings.db, //cookie name
+  resave: false,
+  saveUninitialized: true,
   cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 30
   }, //30 days
