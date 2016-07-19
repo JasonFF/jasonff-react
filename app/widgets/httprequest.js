@@ -27,7 +27,7 @@ let commonFetch = (method, url, parameters, version, options)=> {
 
     let newOptions = ((version == null) ? {
         headers: {
-            'Content-Type': 'application/json'
+             "X-Requested-With":"XMLHttpRequest"
         }
     } : {
         headers: {
