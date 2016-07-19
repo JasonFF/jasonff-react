@@ -27,11 +27,7 @@ let commonFetch = (method, url, parameters, version, options)=> {
 
     let newOptions = ((version == null) ? {
         headers: {
-            //'Access-Control-Allow-Origin':'http://www.frombottomto.top/'
-            //'Access-Control-Allow-Origin':'http://localhost:8090/',
-            //'Accept': 'application/json',
             'Content-Type': 'application/json'
-            //mode:'no-cors'
         }
     } : {
         headers: {
