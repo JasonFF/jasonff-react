@@ -57,7 +57,7 @@ export default class Signup extends Component {
             </Row>
             <Row key='item4'>
               <Col span={16} offset={4}>
-                <LoginInput type='password' maxLength='30' name="password" />
+                <LoginInput type='password' maxLength='30' name="passwordRe" />
               </Col>
             </Row>
             <Row key='item5'>

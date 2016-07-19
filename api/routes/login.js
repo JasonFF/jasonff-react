@@ -21,13 +21,13 @@ router.post('/', function(req, res) {
   });
   newUser.get(newUser.email, function(err, user) {
     if (!user) {
-      return res.send({status:3,msg:'not exist'})
+      return res.send({status:3,msg:'用户不存在'})
     }
     if (newUser.password.toString() != user.password.buffer.toString()) {
-      return res.send({status:0,msg:'wrong password',session:req.session})
+      return res.send({status:0,msg:'密码错误'})
     }
     req.session.user = user;
-    res.send({status:1,msg:'success',session:req.session.user._id});
+    res.send({status:1,msg:'success',token:req.session.user._id});
   })
 })
 

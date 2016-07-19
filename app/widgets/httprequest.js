@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const rootUrl = 'http://localhost:3030/';
+const rootUrl = 'http://api.jasonff.top/';
 
 let commonFetch = (method, url, parameters, version, options)=> {
     const urlPath = String(url);
@@ -30,7 +30,7 @@ let commonFetch = (method, url, parameters, version, options)=> {
             //'Access-Control-Allow-Origin':'http://www.frombottomto.top/'
             //'Access-Control-Allow-Origin':'http://localhost:8090/',
             //'Accept': 'application/json',
-            //'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
             //mode:'no-cors'
         }
     } : {

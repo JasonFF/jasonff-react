@@ -37,7 +37,7 @@ export default class Login extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const {status} = nextProps.user;
-    if (status == 1403) {
+    if (status != 1) {
       Modal.error({title:'账号或者密码错误。。'})
     };
     if (status == 1) {
