@@ -9,7 +9,7 @@ var newblog = require('./newBlog.js');
 module.exports = function(app) {
   app.all('*', function(req, res, next) {
     res.set({
-      "Access-Control-Allow-Origin": "http://localhost:3333",
+      "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
       "Access-Control-Allow-Methods": "PUT,POST,GET,DELETE,OPTIONS",
       "Content-Type": "application/json;charset=utf-8"
