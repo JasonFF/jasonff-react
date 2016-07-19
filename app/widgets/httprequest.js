@@ -27,7 +27,8 @@ let commonFetch = (method, url, parameters, version, options)=> {
 
     let newOptions = ((version == null) ? {
         headers: {
-             "X-Requested-With":"XMLHttpRequest"
+             "X-Requested-With":"XMLHttpRequest",
+             'Content-type': 'application/x-www-form-urlencoded'
         }
     } : {
         headers: {
