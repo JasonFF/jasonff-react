@@ -18,6 +18,7 @@ export default function reducer(state = initialState, action = {} ) {
   }
 }
 function resLogin(json) {
+  window.localStorage['jftoken'] = json.token;
   return {
     type: LOGIN,
     data: json

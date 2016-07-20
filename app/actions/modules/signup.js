@@ -31,6 +31,7 @@ function resSignuping() {
 export function reqSignup(para) {
   return dispatch => {
     dispatch(resSignuping())
+    console.log(para)
     fetchPost('signup', para).then(res=>res.json()).then(json=>dispatch(resSignup(json)))
   }
 }

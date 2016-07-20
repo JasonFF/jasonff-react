@@ -11,8 +11,10 @@ status
 var router = require('express').Router();
 var User = require('../models/user.js');
 var crypto = require('crypto');
+var multer = require('multer');
+var upload = multer();
 
-router.post('/', function(req, res) {
+router.post('/',upload.array() ,function(req, res) {
   var md5 = crypto.createHash('md5');
   var password = md5.update(req.body.password).digest('Jason');
   var newUser = new User({
@@ -27,7 +29,11 @@ router.post('/', function(req, res) {
       return res.send({status:0,msg:'密码错误'})
     }
     req.session.user = user;
-    res.send({status:1,msg:'success',token:req.session.user._id});
+    res.send({
+      status: 1,
+      msg: 'success',
+      token: req.session.user._id
+    });
   })
 })
 

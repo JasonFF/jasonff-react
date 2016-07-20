@@ -12,8 +12,10 @@ passwordRe
 var router = require('express').Router();
 var User = require('../models/user.js');
 var crypto = require('crypto');
+var multer = require('multer');
+var upload = multer();
 
-router.post('/',function(req, res){
+router.post('/',upload.array(), function(req, res){
   if (req.body.password != req.body.passwordRe) {
     return res.send({
       status: 3,

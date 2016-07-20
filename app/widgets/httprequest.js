@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const rootUrl = 'http://api.jasonff.top/';
+const rootUrl = 'http://0.0.0.0:3030/';
 
 let commonFetch = (method, url, parameters, version, options)=> {
     const urlPath = String(url);
@@ -27,8 +27,7 @@ let commonFetch = (method, url, parameters, version, options)=> {
 
     let newOptions = ((version == null) ? {
         headers: {
-             "X-Requested-With":"XMLHttpRequest",
-             'Content-type': 'application/x-www-form-urlencoded'
+          
         }
     } : {
         headers: {
@@ -41,7 +40,7 @@ let commonFetch = (method, url, parameters, version, options)=> {
         return fetch(wholeUrl, newOptions);
     }
     if (method === 'post') {
-        newOptions.method = 'post';
+        newOptions.method = 'POST';
         let form = new FormData();
         for (let key in parameters) {
             let value = parameters[key];

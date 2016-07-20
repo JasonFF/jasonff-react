@@ -8,8 +8,6 @@ import {getFormValue} from 'widgets';
 import {reqLogin} from 'actions';
 import {connect} from 'react-redux';
 
-const localStorage = localStorage?localStorage:{};
-
 export default class Login extends Component {
 
   componentWillMount() {
@@ -20,13 +18,12 @@ export default class Login extends Component {
   submit(e) {
     e.preventDefault();
     let formvalue = getFormValue(e.target);
-    formvalue['version'] = 1;
     this.props.reqLogin(formvalue);
     if (this.state.remember) {
-      localStorage['phoneNum'] = e.target[0].value;
+      localStorage['email'] = e.target[0].value;
       localStorage['remember'] = true;
     }else {
-      localStorage['phoneNum'] = '';
+      localStorage['email'] = '';
       localStorage['remember'] = '';
     }
   }
@@ -37,18 +34,18 @@ export default class Login extends Component {
   }
   componentWillReceiveProps(nextProps) {
     const {status} = nextProps.user;
-    if (status != 1) {
-      Modal.error({title:'账号或者密码错误。。'})
-    };
     if (status == 1) {
       message.success('登录成功！')
-      console.log(this)
-      this.context.router.push('/statistics')
+      this.context.router.push('/home')
+    }else if (status == 0) {
+      Modal.error({title:'账号或者密码错误。。'})
+    }else if (status == 3) {
+      Modal.error({title:'该用户不存在。请注册。'})
     }
   }
   render() {
     const style = require('./Login.scss');
-    const {phoneNum, remember} = localStorage;
+    const {email, remember} = localStorage;
     return (
       <div className={style.container} style={{backgroundImage:'url(/static/image/warcraft.jpg)'}}>
         <Col xs={24} sm={{span:12, offset:6}} lg={{span: 10, offset: 7}} className={style.loginbox}>
@@ -61,7 +58,7 @@ export default class Login extends Component {
             </Row>
             <Row key='item2'>
               <Col span={16} offset={4}>
-                <LoginInput type='email' name="email" defaultValue={phoneNum} />
+                <LoginInput type='email' name="email" defaultValue={email} />
               </Col>
             </Row>
             <Row key='item3'>
