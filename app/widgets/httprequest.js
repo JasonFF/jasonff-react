@@ -1,6 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-const rootUrl = 'http://0.0.0.0:3030/';
+const rootUrl = __PRODUCTION__?'http://api.jasonff.top/':'http://0.0.0.0:3030/';
 
 let commonFetch = (method, url, parameters, version, options)=> {
     const urlPath = String(url);
@@ -27,7 +27,7 @@ let commonFetch = (method, url, parameters, version, options)=> {
 
     let newOptions = ((version == null) ? {
         headers: {
-          
+
         }
     } : {
         headers: {
