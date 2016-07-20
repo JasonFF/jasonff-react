@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router'
 
-@connect(state=>({user:state.user.data}),
+@connect(state=>({user:state.user}),
 {})
 export default class Navbar extends Component {
   render() {
     const style = require('./Navbar.scss');
     return (
-      <nav className={style.nav}>
-        <div className={style.logo}>
-          <img src="/static/image/logo_white.png" alt=""/>
-        </div>
-        <div className={style.userinfo}>
-          <div className={style.image} style={{backgroundImage:`url(${this.props.user.image})`}}></div>
-        </div>
+      <nav className={style.nav} style={{backgroundImage:'url(/static/image/bg-1.jpg)'}}>
+        <Link to="/" className={style.logo} style={{backgroundImage:`url(/static/image/jf.png)`}}></Link>
       </nav>
     )
   }

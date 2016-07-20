@@ -47,7 +47,7 @@ export default class Login extends Component {
     const style = require('./Login.scss');
     const {email, remember} = localStorage;
     return (
-      <div className={style.container} style={{backgroundImage:'url(/static/image/warcraft.jpg)'}}>
+      <div className={style.container+' animated fadeIn'} style={{backgroundImage:'url(/static/image/warcraft.jpg)'}}>
         <Col xs={24} sm={{span:12, offset:6}} lg={{span: 10, offset: 7}} className={style.loginbox}>
           <QueueAnim component={Form} onSubmit={(e)=>this.submit(e)} className={style.form} type="bottom" leaveReverse>
             <Row key='item1'>
