@@ -7,6 +7,7 @@
   background-color: $darkBlue;
   background: center/cover no-repeat;
   transition: height 0.5s ease;
+  z-index: 99;
   &:hover {
     height: 150px;
   }

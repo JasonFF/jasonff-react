@@ -31,10 +31,10 @@ app.use(cookieParser());
 app.use(session({
   secret: settings.cookieSecret,
   key: settings.db, //cookie name
-  resave: false,
+  resave: true,
   saveUninitialized: true,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 30
+    maxAge: 1000 * 60 * 60 * 1
   }, //30 days
   store: new MongoStore({
     url: 'mongodb://localhost/myblog'

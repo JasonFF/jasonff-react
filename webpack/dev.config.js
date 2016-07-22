@@ -3,6 +3,8 @@ var path = require("path");
 var webpack = require("webpack");
 var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var AddHashPlugin = require('./plugins/add-hash.js');
+var ChangeAntdPlugin = require('./plugins/change-antd-theme.js');
 
 module.exports = {
     devtool: 'cheap-module-source-map',
@@ -26,27 +28,13 @@ module.exports = {
             __DEVELOPMENT__: true,
             __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
         }),
-        function() {
-            this.plugin("done", function(statsData) {
-                var stats = statsData.toJson();
-                var bundlejs,maincss;
-                var mains = stats.assetsByChunkName.main;
-                for (var i = 0; i < mains.length; i++) {
-                  if (/^(bundle).+(js)$/.test(mains[i])) {
-                    bundlejs = mains[i]
-                  }
-                  if (/^(main).+(css)$/.test(mains[i])) {
-                    maincss = mains[i]
-                  }
-                }
-                if (!stats.errors.length) {
-                    var htmlFileName = "index.html";
-                    var html = fs.readFileSync(path.join('./static/temp', htmlFileName), "utf8");
-                    var htmlOutput = html.replace('bundle.js', bundlejs).replace('main.css', maincss);
-                    fs.writeFileSync(path.join('./', htmlFileName), htmlOutput);
-                }
-            });
-        }
+        new AddHashPlugin({
+          from: path.join('./static', 'index.html'),
+          to: path.join('./', 'index.html')
+        }),
+        new ChangeAntdPlugin({
+          context: path.join('./')
+        })
     ],
     module: {
         loaders: [

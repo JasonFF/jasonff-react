@@ -14,7 +14,7 @@ export default class Home extends Component {
       go: true
     })
     setTimeout(function(){
-      that.context.router.push('/login')
+      that.context.router.push('/index')
     },500)
   }
   render() {

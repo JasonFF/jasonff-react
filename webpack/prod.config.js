@@ -3,6 +3,8 @@ var path = require("path");
 var webpack = require("webpack");
 var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var AddHashPlugin = require('./plugins/add-hash.js');
+var ChangeAntdPlugin = require('./plugins/change-antd-theme.js');
 
 var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
 var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
@@ -33,17 +35,13 @@ module.exports = {
             __DEVELOPMENT__: false,
             __DEVTOOLS__: false  // <-------- DISABLE redux-devtools HERE
         }),
-        function() {
-            this.plugin("done", function(statsData) {
-                var stats = statsData.toJson();
-                if (!stats.errors.length) {
-                    var htmlFileName = "index.html";
-                    var html = fs.readFileSync(path.join('./', 'static/temp', htmlFileName), "utf8");
-                    var htmlOutput = html.replace('bundle.js', stats.assetsByChunkName.main[0]).replace('main.css', stats.assetsByChunkName.main[1]);
-                    fs.writeFileSync(path.join('./', htmlFileName), htmlOutput);
-                }
-            });
-        },
+        new AddHashPlugin({
+          from: path.join('./static', 'index.html'),
+          to: path.join('./', 'index.html')
+        }),
+        new ChangeAntdPlugin({
+          context: path.join('./')
+        }),
         webpackIsomorphicToolsPlugin
     ],
     module: {

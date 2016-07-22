@@ -6,7 +6,9 @@ import {
     Signup,
     UserHome,
     Home,
-    Index
+    Index,
+    NewBlog,
+    BlogDetail
   } from 'containers';
 
 const localStorage = localStorage?localStorage:{};
@@ -30,8 +32,10 @@ export default (store) => {
       <IndexRoute component={Home}></IndexRoute>
       <Route onEnter={needLogin}>
         <Route path='home' component={UserHome}></Route>
+        <Route path='newblog' component={NewBlog}></Route>
       </Route>
       <Route path='index' component={Index}></Route>
+      <Route path='blog/:id' component={BlogDetail}></Route>
       <Route path='login' component={Login}></Route>
       <Route path='signup' component={Signup}></Route>
     </Route>

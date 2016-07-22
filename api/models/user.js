@@ -4,8 +4,9 @@ var crypto = require('crypto');
 function User(user) {
 	this.password = user.password;
 	this.email = user.email;
+	this.username = user.username
 }
-User.prototype.get = function(email, callback) {
+User.prototype.get = function(options, callback) {
 	mongodb.open(function(err, db) {
 		if (err) {
 			return callback(err);
@@ -16,7 +17,7 @@ User.prototype.get = function(email, callback) {
 				return callback(err);
 			};
 			collection.findOne({
-				email: email
+				$or:[{email:options.email},{username:options.username}]
 			}, function(err, data) {
 				if (err) {
 					mongodb.close();
@@ -31,6 +32,7 @@ User.prototype.save = function(callback) {
 	var user = {
 		password: this.password,
 		email: this.email,
+		username: this.username,
 		signupTime: new Date().getTime()
 	};
 	mongodb.open(function(err, db) {
@@ -55,7 +57,7 @@ User.prototype.save = function(callback) {
 	});
 };
 
-User.prototype.update = function(callback) {
+User.prototype.login = function(callback) {
 	var user = {
 		email: this.email
 	};

@@ -19,9 +19,10 @@ router.post('/',upload.array() ,function(req, res) {
   var password = md5.update(req.body.password).digest('Jason');
   var newUser = new User({
     password: password,
-    email: req.body.email
+    email: req.body.email,
+    username: req.body.username
   });
-  newUser.get(newUser.email, function(err, user) {
+  newUser.get({email: newUser.email,username: newUser.username}, function(err, user) {
     if (!user) {
       return res.send({status:3,msg:'用户不存在'})
     }
@@ -29,10 +30,14 @@ router.post('/',upload.array() ,function(req, res) {
       return res.send({status:0,msg:'密码错误'})
     }
     req.session.user = user;
-    res.send({
-      status: 1,
-      msg: 'success',
-      token: req.session.user._id
+    newUser.email = user.email;
+    newUser.login(function(){
+      res.send({
+        status: 1,
+        msg: 'success',
+        user: req.session.user,
+        token: req.sessionID
+      });
     });
   })
 })
