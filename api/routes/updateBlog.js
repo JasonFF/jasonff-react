@@ -7,11 +7,10 @@ var checkLogin = require('./checkLogin.js')
 
 router.post('/',upload.array(),checkLogin ,function(req, res) {
   var article = new Article();
-  article.save({
+  article.update({
     title: req.body.title,
     content: req.body.content,
-    userId: req.session.user._id,
-    username: req.session.user.username
+    articleId: req.body.blogid
   },function(err, data) {
     if (err) {
       return res.send({

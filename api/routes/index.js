@@ -3,7 +3,8 @@ var login = require('./login.js');
 var newblog = require('./newBlog.js');
 var newBlog = require('./newBlog.js');
 var blogList = require('./blogList.js')
-var blogDetail = require('./blogDetail.js')
+var blogDetail = require('./blogDetail.js');
+var updateBlog = require('./updateBlog.js');
 // 0 err
 // 1 success
 // 2 repeated
@@ -25,4 +26,6 @@ module.exports = function(app) {
   app.use('/newblog', newBlog);
   app.use('/bloglist', blogList);
   app.use('/blogdetail', blogDetail);
+  app.use('/updateblog', updateBlog);
+  app.use('/update_blog_scan', updateBlog);
 }

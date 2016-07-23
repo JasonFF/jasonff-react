@@ -19,7 +19,7 @@ export default class Index extends Component {
           <div className={style.mailList}>
             {
               list.map((data,index)=><div key={'index'+index}>
-                <Link to={'/blog/'+data._id}>{data.title}</Link>
+                <Link className={style.blogtitle} to={'/blog/'+data._id}>{data.title}</Link>
                 <p>{data.content}</p>
               </div>)
             }
