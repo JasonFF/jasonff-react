@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "npm run webpack-dev",
     "api": "better-npm-run start-api",
-    "api-dev": "better-npm-run start-api-dev",
+    "apidev": "concurrent 'npm run api' 'npm run dev'",
     "server": "better-npm-run start-server",
     "build": "rm -rf dist && NODE_ENV=production webpack  --display-error-details --colors --progress -p --config webpack/prod.config.js",
     "webpack-dev": "webpack-dev-server --progress --colors --hot --inline --config webpack/dev.config.js"
@@ -54,6 +54,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "isomorphic-fetch": "^2.2.1",
     "markdown": "^0.5.0",
+    "moment": "^2.14.1",
     "morgan": "^1.7.0",
     "multer": "^1.1.0",
     "node-sass": "^3.8.0",

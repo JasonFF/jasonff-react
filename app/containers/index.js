@@ -7,3 +7,4 @@ export UserHome from './UserHome/UserHome';
 export Index from './Index/Index';
 export NewBlog from './NewBlog/NewBlog';
 export BlogDetail from './BlogDetail/BlogDetail';
+export NeedLogin from './NeedLogin/NeedLogin';

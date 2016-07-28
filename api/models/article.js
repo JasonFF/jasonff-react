@@ -64,7 +64,7 @@ Article.prototype.getList_all = function(callback) {
 				mongodb.close();
 				return callback(err);
 			};
-      collection.find().toArray(function(err, data) {
+      collection.find().sort({createTime: -1}).toArray(function(err, data) {
         mongodb.close();
         if (err) {
           return callback(err);

@@ -1,40 +1,57 @@
 @import '../../constants/commonStyle.scss';
 
 .container {
+  height: 100%;
   overflow: hidden;
-  padding-bottom: 50px;
 }
-
+.rightBox {
+  height: 100%;
+}
 .form {
-  margin-top: 100px;
-  input {
-    width: 100%;
-    height: 50px;
-    padding: 0 40px;
-    text-align: center;
-    font-size: 3rem;
-    outline: none;
-    border: 0;
-    border-bottom: 3px dashed $mainBlue;
-    &:focus {
-      border-style: solid
-    }
-  }
-  textarea {
-    width: 100%;
-    height: 60%;
-    padding: 20px 40px;
-    border: 0;
-    border-bottom: 3px dashed $mainBlue;
-    font-size: 3rem;
-    outline: none;
-    &:focus {
-      border-style: solid;
-    }
-  }
+  position: relative;
+  height: 100%;
+  padding: 20px 30px;
+  background-color: #FCFAF2;
+  border-top: 10px solid #ededed;
+}
+.titleInput {
+  width: 100%;
+  outline: 0;
+  border: 0;
+  background-color: transparent;
+  font-size: 3rem;
+}
+.toolbtns {
+  height: 40px;
+  margin: 0 -30px;
+  padding: 0 30px;
+  background: #dedede;
   button {
-    width: 100%;
-    height: 50px;
-    margin-top: 50px
+    float: right;
+    height: 100%;
+    width: 40px;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    transition: all 0.1s ease;
+    cursor: pointer;
+    &:hover {
+      background: #444;
+      color: #fff;
+    }
   }
+}
+.contentBox {
+  position: absolute;
+  top: 105px;
+  left:0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 30px;
+  outline: 0;
+  border: 0;
+  font-size: 1.8rem;
+  background-color: transparent;
+  resize: none;
 }

@@ -3,50 +3,41 @@
 .nav {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
+  height: 100%;
+  background: center/cover no-repeat;
+  z-index: 99;
+}
+.navbar {
   width: 60px;
   height: 100%;
-  background-color: $darkBlue;
-  background: center/cover no-repeat;
-  transition: width 0.5s ease;
-  z-index: 99;
-  &:hover {
-    width: 200px;
-    .navlist {
-      opacity: 1
-    }
-  }
+  padding-top: 20px;
+  background-color: #333;
 }
 .logo {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  top:50%;
-  left: 0;
-  margin-left: -50px;
-  margin-top: -25px;
-  border: 5px solid #000;
-  border-radius: 50px;
-  background: center/cover no-repeat;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px $fontBlack;
-  &:hover {
-    border: 5px solid #fff;
-    box-shadow: 0 0 20px #000;
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-color: #333;
+  img {
+    width: 60px;
+    height: 60px;
   }
-
 }
 .navlist {
-  opacity: 0;
-  transition: all 0.5s ease;
+  width: 60px;
   a {
     display: block;
-    margin: 20px auto;
+    height: 60px;
+    line-height: 60px;
+    margin: 20px 0;
     text-align: center;
-    color: $fontBlackL;
+    color: #fff;
     font-size: 3rem;
+    transition: all 0.3s ease;
     &:hover {
-      color: $fontBlackD;
+      background-color: #eee;
+      color: #333
     }
   }
 }

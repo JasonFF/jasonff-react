@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {reqBlogList} from 'actions';
 import {Row, Col} from 'antd';
 import {Link} from "react-router";
+import moment from 'moment'
 
 export default class Index extends Component {
   componentWillMount() {
@@ -14,16 +15,14 @@ export default class Index extends Component {
     const list = this.props.blogList.data;
     return (
       <main className={`${style.container} animated fadeIn`}>
-        <Navbar></Navbar>
-        <Col xs={24} sm={{span:20, offset:2}}>
-          <div className={style.mailList}>
-            {
-              list.map((data,index)=><div key={'index'+index}>
-                <Link className={style.blogtitle} to={'/blog/'+data._id}>{data.title}</Link>
-                <p>{data.content}</p>
-              </div>)
-            }
-          </div>
+        <Navbar/>
+        <Col className={style.mainBox} xs={24} sm={{span:15, offset:7}}>
+          {
+            list.map((data,index)=><div className={style.blogBox} key={'index'+index}>
+              <Link className={style.blogTitle} to={'/blog/'+data._id}>{data.title}</Link>
+              <p className={style.time}>{moment(data.createTime).format("YYYY-MM-DD HH:mm")}</p>
+            </div>)
+          }
         </Col>
       </main>
     )

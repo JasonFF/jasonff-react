@@ -7,10 +7,10 @@ var AddHashPlugin = require('./plugins/add-hash.js');
 var ChangeAntdPlugin = require('./plugins/change-antd-theme.js');
 
 module.exports = {
-    devtool: 'cheap-module-source-map',
+    devtool: 'cheap-module-eval-source-map',
     context: path.resolve(__dirname,'..'),
     entry: {
-      main: ['webpack/hot/dev-server','webpack-dev-server/client?http://localhost:3333','./app/index.jsx'],
+      main: ['webpack/hot/dev-server','webpack-dev-server/client?http://localhost:12345','./app/index.jsx'],
       vendor: ['react', 'redux']
     },
     output: {
@@ -73,7 +73,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     devServer: {
-        port: 3333,
+        port: 12345,
         hot: true,
         host:"0.0.0.0",
         historyApiFallback: {

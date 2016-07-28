@@ -6,11 +6,15 @@ import user from './modules/login';
 import signup from './modules/signup';
 import newBlog from './modules/newBlog';
 import blogList from './modules/blogList';
+import checkLogin from './modules/checkLogin';
+import blogDetail from './modules/blogDetail';
 
 export default combineReducers({
   routing: routerReducer,
   user: user,
   signup: signup,
   newBlog: newBlog,
-  blogList: blogList
+  blogList: blogList,
+  checkLogin: checkLogin,
+  blogDetail: blogDetail
 });
