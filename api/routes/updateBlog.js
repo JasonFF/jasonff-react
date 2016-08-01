@@ -7,20 +7,34 @@ var checkLogin = require('./checkLogin.js')
 
 router.post('/',upload.array(),checkLogin ,function(req, res) {
   var article = new Article();
-  article.update({
-    title: req.body.title,
-    content: req.body.content,
-    articleId: req.body.blogid
-  },function(err, data) {
+  article.get_detail({_id: req.body.blogId},function(err,data) {
     if (err) {
       return res.send({
         status: 0,
         msg: err
       })
     }
-    res.send({
-      status: 1,
-      msg: 'success'
+    if (data.userId != req.session.user._id) {
+      return res.send({
+        status:0,
+        msg:'用户不对！'
+      })
+    }
+    article.update({
+      title: req.body.title,
+      content: req.body.content,
+      _id: req.body.blogId
+    },function(err, data) {
+      if (err) {
+        return res.send({
+          status: 0,
+          msg: err
+        })
+      }
+      res.send({
+        status: 1,
+        msg: 'success'
+      })
     })
   })
 })

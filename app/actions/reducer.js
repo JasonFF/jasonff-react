@@ -8,6 +8,7 @@ import newBlog from './modules/newBlog';
 import blogList from './modules/blogList';
 import checkLogin from './modules/checkLogin';
 import blogDetail from './modules/blogDetail';
+import updateBlog from './modules/updateBlog';
 
 export default combineReducers({
   routing: routerReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   newBlog: newBlog,
   blogList: blogList,
   checkLogin: checkLogin,
-  blogDetail: blogDetail
+  blogDetail: blogDetail,
+  updateBlog: updateBlog
 });

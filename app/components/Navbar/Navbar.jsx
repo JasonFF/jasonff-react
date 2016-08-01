@@ -14,8 +14,8 @@ export default class Navbar extends Component {
         <div className={style.navbar}>
           <Link to="/" className={style.logo}><img src="/static/image/jf-white.png" alt=""/></Link>
           <ul className={style.navlist}>
-            <Link to="/"><Icon type="home"/></Link>
-            <Link to="/index"><Icon type="book"/></Link>
+            <Link to="/index"><Icon type="home"/></Link>
+            <Link to="/home"><Icon type="book"/></Link>
             <Link to="/newblog"><Icon type="edit"/></Link>
             <Link to="/login"><Icon type="user"/></Link>
           </ul>

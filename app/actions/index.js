@@ -6,3 +6,4 @@ export {reqNewBlog} from './modules/newBlog';
 export {reqBlogList} from './modules/blogList';
 export {initLogin} from './modules/checkLogin';
 export {reqBlogDetail} from './modules/blogDetail';
+export {reqUpdateBlog} from './modules/updateBlog';

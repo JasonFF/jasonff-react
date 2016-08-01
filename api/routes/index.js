@@ -5,10 +5,7 @@ var newBlog = require('./newBlog.js');
 var blogList = require('./blogList.js')
 var blogDetail = require('./blogDetail.js');
 var updateBlog = require('./updateBlog.js');
-// 0 err
-// 1 success
-// 2 repeated
-// 3 none
+var myBlogList = require('./myBlogList.js');
 
 module.exports = function(app) {
   app.all('*', function(req, res, next) {
@@ -27,5 +24,6 @@ module.exports = function(app) {
   app.use('/bloglist', blogList);
   app.use('/blogdetail', blogDetail);
   app.use('/updateblog', updateBlog);
-  app.use('/update_blog_scan', updateBlog);
+  app.use('/updateblogscan', updateBlog);
+  app.use('/mybloglist', myBlogList);
 }
