@@ -1,13 +1,3 @@
-// login
-/*
-parameters
-email
-password
-status
-0 密码错误
-1 success
-2 none
-*/
 var router = require('express').Router();
 var User = require('../models/user.js');
 var crypto = require('crypto');
@@ -26,7 +16,7 @@ router.post('/',upload.array() ,function(req, res) {
     if (!user) {
       return res.send({status:3,msg:'用户不存在'})
     }
-    if (newUser.password.toString() != user.password.buffer.toString()) {
+    if (newUser.password.toString() != user.password.toString()) {
       return res.send({status:0,msg:'密码错误'})
     }
     req.session.user = user;
