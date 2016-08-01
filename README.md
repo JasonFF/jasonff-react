@@ -71,65 +71,62 @@
 
 ## — nginx：静态页面服务器
 
-```
-# /nginx.config
 
-#user  nobody;
-worker_processes  1;
+    # /nginx.config
 
-#error_log  logs/error.log;
-#error_log  logs/error.log  notice;
-#error_log  logs/error.log  info;
+    #user  nobody;
+    worker_processes  1;
 
-#pid        logs/nginx.pid;
+    #error_log  logs/error.log;
+    #error_log  logs/error.log  notice;
+    #error_log  logs/error.log  info;
 
-
-events {
-    worker_connections  1024;
-}
+    #pid        logs/nginx.pid;
 
 
-http {
-    include       mime.types;
-    default_type  application/octet-stream;
-
-
-    sendfile        on;
-
-    keepalive_timeout  65;
-
-    #gzip  on;
-
-    include        vhosts/*;
-}
-
-```
-```
-# /vhosts/erp-web.config
-
-server {
-    listen       8010;
-    server_name  localhost;
-
-    root /Users/jasonff/project/erp-web;
-
-    gzip on;
-
-    location / {
-        try_files $uri @fallback;
-    }
-
-    location @fallback {
-        rewrite .* /index.html break;
+    events {
+        worker_connections  1024;
     }
 
 
-    error_page   500 502 503 504  /50x.html;
-    location = /50x.html {
-        root   html;
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+
+
+        sendfile        on;
+
+        keepalive_timeout  65;
+
+        #gzip  on;
+
+        include        vhosts/*;
     }
 
-}
+    ```
+    ```
+    # /vhosts/erp-web.config
+
+    server {
+        listen       8010;
+        server_name  localhost;
+
+        root /Users/jasonff/project/erp-web;
+
+        gzip on;
+
+        location / {
+            try_files $uri @fallback;
+        }
+
+        location @fallback {
+            rewrite .* /index.html break;
+        }
 
 
-```
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+    }
