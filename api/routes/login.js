@@ -16,7 +16,6 @@ router.post('/',upload.array() ,function(req, res) {
     if (!user) {
       return res.send({status:3,msg:'用户不存在'})
     }
-    console.log(newUser.password,user.password.buffer)
     if (newUser.password.toString() != user.password.buffer.toString()) {
       return res.send({status:0,msg:'密码错误',user:user})
     }
