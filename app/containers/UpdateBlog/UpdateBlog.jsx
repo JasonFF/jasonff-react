@@ -1,7 +1,7 @@
 import React,{Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {getFormValue} from 'widgets';
-import {Navbar} from 'components';
+import {Navbar, BlogForm} from 'components';
 import {Row,Col,message} from 'antd';
 import {reqUpdateBlog, reqBlogDetail} from 'actions';
 
@@ -20,17 +20,25 @@ export default class UpdateBlog extends Component {
     this.props.reqBlogDetail({token:this.props.user.token,blogId: this.props.params.id})
     this.setState({
       init: 0,
-      update: false
+      update: false,
+      title: '',
+      content: ''
     })
   }
   componentWillReceiveProps(nextProps) {
     if (this.state.init == 1) {
-      document.querySelector('input[name=title]').value = nextProps.blogDetail.data.title
-      document.querySelector('textarea[name=content]').value = nextProps.blogDetail.data.content
+      this.setState({
+        title: nextProps.blogDetail.data.title,
+        content: nextProps.blogDetail.data.content
+      })
     }
     if (this.state.update) {
       if (nextProps.updateBlog.status == 1) {
           message.success('更新成功！')
+          this.setState({
+            title: nextProps.updateBlog.data.title,
+            content: nextProps.updateBlog.data.content
+          })
       }
       if (nextProps.updateBlog.status == 0) {
           message.error('更新失败！')
@@ -40,21 +48,15 @@ export default class UpdateBlog extends Component {
     this.setState({
       init: this.state.init+1
     })
-    console.log(nextProps.updateBlog)
   }
   render() {
     const style = require('./UpdateBlog.scss');
+    const {title,content} = this.state;
     return (
       <main className={style.container}>
         <Navbar background="/static/image/bg-2.jpg"/>
         <Col xs={24} sm={{span:17,offset:7}} className={style.rightBox}>
-          <form className={style.form} onSubmit={(e)=>this.handleSubmit(e)}>
-            <input className={style.titleInput} name="title" type="text"/>
-            <div className={style.toolbtns}>
-              <button type='submit'>提交</button>
-            </div>
-            <textarea className={style.contentBox} name="content"></textarea>
-          </form>
+          <BlogForm defaultValue={{title:title,content:content}} onSubmit={this.handleSubmit.bind(this)}/>
         </Col>
       </main>
     )

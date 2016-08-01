@@ -33,7 +33,12 @@ router.post('/',upload.array(),checkLogin ,function(req, res) {
       }
       res.send({
         status: 1,
-        msg: 'success'
+        msg: 'success',
+        data: {
+          title: req.body.title,
+          content: req.body.content,
+          blogId: req.body.bolgId
+        }
       })
     })
   })
