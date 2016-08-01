@@ -18,7 +18,7 @@ router.post('/',upload.array() ,function(req, res) {
     }
     console.log(newUser.password,user.password.buffer)
     if (newUser.password.toString() != user.password.buffer.toString()) {
-      return res.send({status:0,msg:'密码错误'})
+      return res.send({status:0,msg:'密码错误',user:user})
     }
     req.session.user = user;
     newUser.email = user.email;
