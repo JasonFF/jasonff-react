@@ -30,6 +30,7 @@ router.post('/',upload.array(), function(req, res){
   }
   var md5 = crypto.createHash('md5');
   var password = md5.update(req.body.password).digest('Jason');
+  console.log(req.body.password,password)
   var newUser = new User({
     username: req.body.username,
     password: password,
