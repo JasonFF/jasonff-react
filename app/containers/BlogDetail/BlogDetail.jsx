@@ -6,8 +6,15 @@ import {Navbar} from 'components'
 
 export default class BlogDetail extends Component {
   componentWillMount() {
-    console.log(this.props.params.id)
     this.props.reqBlogDetail({blogId:this.props.params.id})
+  }
+  componentDidMount() {
+    const uyan_script = document.getElementById('uyan_script');
+    let newScript = document.createElement('script');
+    newScript.src = uyan_script.src;
+    newScript.type = 'text/javascript';
+    newScript.id = 'uyan_newscript';
+    document.getElementsByTagName('body')[0].appendChild(newScript)
   }
   render() {
     const style = require('./BlogDetail.scss');
@@ -19,6 +26,7 @@ export default class BlogDetail extends Component {
           <h1 className={style.title}>{title||''}</h1>
           <div className='markdown-body' dangerouslySetInnerHTML={{__html:content}}></div>
           <div id="uyan_frame"></div>
+          <script id="uyan_script" type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2060453"></script>
         </Col>
       </div>
     )
