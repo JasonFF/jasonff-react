@@ -48,19 +48,13 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style','css!less')
             },
             {
-                test: /\.jsx?$/,
+                test: /\.js(x)?$/,
                 exclude: /(node_modules)/,
                 loader: 'babel', // 'babel-loader' is also a legal name to reference
                 query: {
                     plugins: ['transform-runtime', 'add-module-exports', "transform-decorators-legacy", ['antd', {'style':true}]],
                     presets: ['react', 'es2015', 'stage-0']
                 }
-            },
-            {
-                test: /\.js$/,
-                loaders: [ 'babel' ],
-                exclude: /node_modules/,
-                include: './'
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192' }
         ]

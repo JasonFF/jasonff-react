@@ -25,15 +25,6 @@ export default function createStore(history, client, data) {
   const reducer = require('./reducer');
   const store = finalCreateStore(reducer, data);
 
-  // 整个store的创建，本质上还是applyMiddeleWare()(createStore)
-  // 加了两个中间件，第一个createMiddleware来自于本地写的中间件clientMiddleware，它用于包装client的方法。对于请求返回来的状态进行管理。
-  // 第二个，routeMiddleware，用于history，主要是用来同步router和history，正如react-router-redux的 github上写的，
-  // This library is not necessary for using Redux together with React Router.
-  // You can use the two together just fine without any additional libraries.
-  // It is useful if you care about recording, persisting, and replaying user actions, using time travel.
-
-  // 这里还进行了方便开发的插件的添加
-
   if (__DEVELOPMENT__ && module.hot) {
     module.hot.accept('./reducer', () => {
       store.replaceReducer(require('./reducer'));

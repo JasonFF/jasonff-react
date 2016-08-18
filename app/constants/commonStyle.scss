@@ -14,3 +14,13 @@ $fontBlackD: darken($fontBlack, 10%);
 $mainGreen: #CBDB29;
 $mainGreenL: lighten($mainGreen, 10%);
 $mainGreenD: darken($mainGreen, 10%);
+$paperYellow: #FCFAF2;
+
+@mixin mainBoxGradient {
+  position: relative;
+  z-index: 2;
+  background: -webkit-linear-gradient(left, rgba(255,255,255,0.9), rgba(255,255,255,0.7),rgba(255,255,255,0.4)); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, rgba(255,255,255,0.9), rgba(255,255,255,0.7),rgba(255,255,255,0.4)); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, rgba(255,255,255,0.9), rgba(255,255,255,0.7),rgba(255,255,255,0.4)); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(255,255,255,0.7),rgba(255,255,255,0.4)); /* 标准的语法（必须放在最后） */
+}

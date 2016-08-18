@@ -4,13 +4,16 @@
   height: 100%;
 }
 .mainBox {
-  height: 100%;
+  @include mainBoxGradient;
 }
 .blogBox {
   height: 150px;
   padding-top: 40px;
   padding-left: 40px;
   border-top: 1px dashed #ddd
+}
+.blogBox:first-child {
+  border-top: 0;
 }
 .blogTitle {
   font-size: 3rem;

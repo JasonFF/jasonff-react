@@ -7,3 +7,4 @@ export {reqBlogList} from './modules/blogList';
 export {initLogin} from './modules/checkLogin';
 export {reqBlogDetail} from './modules/blogDetail';
 export {reqUpdateBlog} from './modules/updateBlog';
+export {reqMyBlogList} from './modules/myBlogList'

@@ -29,7 +29,7 @@ function resMyBlogListing() {
     type: MYBLOGLISTING
   }
 }
-export function reqBlogList(para) {
+export function reqMyBlogList(para) {
   return dispatch => {
     dispatch(resMyBlogListing())
     fetchGet('mybloglist',para).then(res=>res.json()).then(json=>dispatch(resMyBlogList(json)))
