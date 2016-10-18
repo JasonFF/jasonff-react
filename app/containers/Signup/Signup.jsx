@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 
 const localStorage = localStorage?localStorage:{};
 
-export default class Signup extends Component {
+export class Signup extends Component {
   submit(e) {
     e.preventDefault();
     let formvalue = getFormValue(e.target);

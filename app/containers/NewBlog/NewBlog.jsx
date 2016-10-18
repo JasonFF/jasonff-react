@@ -5,7 +5,7 @@ import {getFormValue} from 'widgets';
 import {Navbar,BlogForm} from 'components';
 import {Row,Col,message} from 'antd';
 
-export default class NewBlog extends Component {
+export class NewBlog extends Component {
   handleSubmit(e) {
     e.preventDefault()
     let formvalue = getFormValue(e.target);

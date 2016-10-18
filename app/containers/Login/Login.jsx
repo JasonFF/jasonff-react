@@ -8,7 +8,7 @@ import {getFormValue} from 'widgets';
 import {reqLogin} from 'actions';
 import {connect} from 'react-redux';
 
-export default class Login extends Component {
+export class Login extends Component {
 
   componentWillMount() {
     this.setState({

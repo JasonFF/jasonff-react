@@ -6,7 +6,7 @@ import {Row, Col} from 'antd';
 import {Link} from "react-router";
 import moment from 'moment'
 
-export default class Index extends Component {
+export class Index extends Component {
   componentWillMount() {
     this.props.reqBlogList()
   }

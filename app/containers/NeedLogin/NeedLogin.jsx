@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {message} from 'antd';
 import {initLogin} from 'actions';
 
-export default class NeedLogin extends Component {
+export class NeedLogin extends Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.checkLogin.status==23333) {
       message.error('逗。。。。')

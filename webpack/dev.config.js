@@ -52,7 +52,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: 'babel', // 'babel-loader' is also a legal name to reference
                 query: {
-                    plugins: ['transform-runtime', 'add-module-exports', "transform-decorators-legacy", ['antd', {'style':true}]],
+                    plugins: ['add-module-exports', "transform-decorators-legacy", ['antd', {'style':true}]],
                     presets: ['react', 'es2015', 'stage-0']
                 }
             },

@@ -6,7 +6,7 @@ import {Col} from 'antd'
 import {reqMyBlogList} from 'actions';
 import moment from 'moment';
 
-export default class UserHome extends Component {
+export class UserHome extends Component {
   componentWillMount() {
     this.props.reqMyBlogList({token:this.props.user.token})
   }

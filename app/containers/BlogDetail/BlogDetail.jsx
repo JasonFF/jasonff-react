@@ -4,7 +4,7 @@ import {reqBlogDetail} from 'actions';
 import {Col} from 'antd';
 import {Navbar} from 'components'
 
-export default class BlogDetail extends Component {
+export class BlogDetail extends Component {
   componentWillMount() {
     this.props.reqBlogDetail({blogId:this.props.params.id})
   }
