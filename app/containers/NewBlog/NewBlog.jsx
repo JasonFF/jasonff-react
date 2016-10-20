@@ -10,7 +10,7 @@ export class NewBlog extends Component {
     e.preventDefault()
     let formvalue = getFormValue(e.target);
     formvalue.token = this.props.user.token;
-    // this.props.reqNewBlog(formvalue);
+    this.props.reqNewBlog(formvalue);
     console.log(formvalue)
   }
   componentWillReceiveProps(nextProps) {
