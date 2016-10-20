@@ -6,9 +6,6 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AddHashPlugin = require('./plugins/add-hash.js');
 var ChangeAntdPlugin = require('./plugins/change-antd-theme.js');
 
-var WebpackIsomorphicToolsPlugin = require('webpack-isomorphic-tools/plugin');
-var webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(require('./webpack-isomorphic-tools'));
-
 module.exports = {
     context: path.resolve(__dirname,'..'),
     entry: {
@@ -41,8 +38,7 @@ module.exports = {
         }),
         new ChangeAntdPlugin({
           context: path.join('./')
-        }),
-        webpackIsomorphicToolsPlugin
+        })
     ],
     module: {
         loaders: [
