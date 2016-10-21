@@ -1,14 +1,14 @@
 import React,{Component} from 'react';
 import {Navbar} from 'components';
 import {connect} from 'react-redux';
-import {reqBlogList} from 'actions';
+import {action} from 'actions';
 import {Row, Col} from 'antd';
 import {Link} from "react-router";
 import moment from 'moment'
 
-export class Index extends Component {
+class Index extends Component {
   componentWillMount() {
-    this.props.reqBlogList()
+    
   }
   render() {
     const style = require('./Index.scss');
@@ -29,4 +29,4 @@ export class Index extends Component {
   }
 }
 
-export default connect(state=>({blogList:state.blogList}),{reqBlogList})(Index)
+export default connect(state=>({truck:state.truck}),{action})(Index)
