@@ -4,14 +4,13 @@ var webpack = require("webpack");
 var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AddHashPlugin = require('./plugins/add-hash.js');
-var ChangeAntdPlugin = require('./plugins/change-antd-theme.js');
 
 module.exports = {
     devtool: 'cheap-module-eval-source-map',
     context: path.resolve(__dirname,'..'),
     entry: {
-      main: ['webpack/hot/dev-server','webpack-dev-server/client?http://localhost:12345','./app/index.jsx'],
-      vendor: ['react', 'redux']
+      main: ['webpack/hot/dev-server','webpack-dev-server/client?http://localhost:7777','./app/index.jsx'],
+      vendor: ['react', 'redux', 'react-dom']
     },
     output: {
         filename: 'bundle.[hash].js',
@@ -24,16 +23,12 @@ module.exports = {
             'process.env': {
                 'NODE_ENV': JSON.stringify('dev')
             },
-            __PRODUCTION__: false,
             __DEVELOPMENT__: true,
             __DEVTOOLS__: true  // <-------- DISABLE redux-devtools HERE
         }),
         new AddHashPlugin({
           from: path.join('./static', 'index.html'),
           to: path.join('./', 'index.html')
-        }),
-        new ChangeAntdPlugin({
-          context: path.join('./')
         })
     ],
     module: {
@@ -43,16 +38,11 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style','css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded&sourceMap')
             },
             {
-                test: /\.less$/,
-                include: /node_modules/,
-                loader: ExtractTextPlugin.extract('style','css!less')
-            },
-            {
                 test: /\.js(x)?$/,
                 exclude: /(node_modules)/,
                 loader: 'babel', // 'babel-loader' is also a legal name to reference
                 query: {
-                    plugins: ['add-module-exports', "transform-decorators-legacy", ['antd', {'style':true}]],
+                    plugins: ['add-module-exports', "transform-decorators-legacy"],
                     presets: ['react', 'es2015', 'stage-0']
                 }
             },
@@ -67,7 +57,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     devServer: {
-        port: 12345,
+        port: 7777,
         hot: true,
         host:"0.0.0.0",
         historyApiFallback: {

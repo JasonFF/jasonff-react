@@ -1,5 +1,4 @@
 import React, {Component, PropTypes} from 'react';
-import {Navbar} from 'components';
 import {Link} from 'react-router';
 
 export default class Home extends Component {
