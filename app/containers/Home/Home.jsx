@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router';
+import {connect} from 'react-redux';
 
 export default class Home extends Component {
   componentWillMount() {
@@ -13,11 +14,11 @@ export default class Home extends Component {
       go: true
     })
     setTimeout(function(){
-      that.context.router.push('/index')
+      that.context.router.push('/hello')
     },500)
   }
   render() {
-    const style = require('./Home.scss');
+    const style = require('./Home.less');
     const {go} = this.state;
     return (
       <div className={style.container}>

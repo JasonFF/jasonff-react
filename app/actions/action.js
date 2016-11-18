@@ -3,7 +3,8 @@ import {
     truck
 } from 'actions';
 
-const BASE_URL = __DEVELOPMENT__?"http://localhost:3000/":"http://api.jasonff.top/"
+const BASE_URL = "http://api.jasonff.top/dist/";
+
 export function action({
     moduleName,
     body,
@@ -16,11 +17,20 @@ export function action({
 }) {
     return (dispatch) => {
         function resData (json,goods){
-            const data = {
+            let data = {
                 [`${moduleName}`]: {
                     loaded: true,
                     ...json,
                     ...goods
+                }
+            }
+            if (json instanceof Array) {
+                data = {
+                    [`${moduleName}`]: {
+                        loaded: true,
+                        items: json,
+                        ...goods
+                    }
                 }
             }
             truck(data,`${moduleName}`)(dispatch)

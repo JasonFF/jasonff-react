@@ -6,7 +6,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AddHashPlugin = require('./plugins/add-hash.js');
 
 module.exports = {
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'source-map',
     context: path.resolve(__dirname,'..'),
     entry: {
       main: ['webpack/hot/dev-server','webpack-dev-server/client?http://localhost:7777','./app/index.jsx'],
@@ -34,16 +34,16 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style','css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded&sourceMap')
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style','css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!less?outputStyle=expanded&sourceMap')
             },
             {
                 test: /\.js(x)?$/,
                 exclude: /(node_modules)/,
                 loader: 'babel', // 'babel-loader' is also a legal name to reference
                 query: {
-                    plugins: ['add-module-exports', "transform-decorators-legacy"],
-                    presets: ['react', 'es2015', 'stage-0']
+                    plugins: ["add-module-exports", "transform-decorators-legacy"],
+                    presets: ['react', 'latest', 'stage-0']
                 }
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192' }
