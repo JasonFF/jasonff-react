@@ -4,14 +4,39 @@ import ReactDOM from 'react-dom';
 const style = require('./NavSide.less');
 
 class NavSide extends Component {
+    componentWillMount() {
+        this.setState({
+            index: -1
+        })
+    }
+    handleClick(i) {
+        this.props.getValue(i)
+        this.setState({
+            index: i
+        })
+    }
     render() {
+        const {data} = this.props;
+        const {index} = this.state;
         return <div className={style.navBox}>
-            NavSide
+            <div className={style.nheader}>
+                <img src="/static/image/jf.png" alt=""/>
+            </div>
+            <div className={style.nlist}>
+                <li onClick={()=>this.handleClick(-1)} className={index==-1?style.active:''} >全部</li>
+                {
+                    data.map((item,i)=><li className={index==i?style.active:''} onClick={()=>this.handleClick(i)} key={i}>
+                        {item.notebook}
+                    </li>)
+                }
+            </div>
+
+
         </div>
     }
 }
 
-export default ({data,close,open}) => {
+export default ({data,close,open,getValue}) => {
     const preDiv = document.getElementById('navside');
     const preMask = document.getElementById('navMask');
     const navside = preDiv?preDiv:document.createElement('div');
@@ -39,7 +64,7 @@ export default ({data,close,open}) => {
     mobileMain.appendChild(navside);
     mobileMain.appendChild(navMask);
 
-    ReactDOM.render(<NavSide></NavSide>,navside);
+    ReactDOM.render(<NavSide getValue={getValue} data={data}></NavSide>,navside);
 
     if (typeof open == 'function') {
         open()

@@ -2,45 +2,51 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import {NavSide} from 'components';
+import {action} from 'actions';
 
 const style = require('./Navbar.less');
 
 
 @connect(state=>{
     return {
-        Notebooks: state.truck.Notebooks
+        Notebooks: state.truck.Notebooks,
+        Blogs: state.truck.Blogs
     }
-},{})
+},{action})
 export default class Navbar extends Component {
-    // componentDidMount() {
-    //     let pretop = 0;
-    //     let direction = 1;
-    //     const navbar = document.getElementById('navbar');
-    //     window.onscroll = function() {
-    //         let scrollTop = document.body.scrollTop;
-    //         if ( scrollTop > pretop) {
-    //             direction = 1;
-    //             pretop = scrollTop;
-    //         } else {
-    //             direction = 0;
-    //             pretop = scrollTop;
-    //         }
-    //
-    //         if (direction) {
-    //             navbar.style.top = '-100%';
-    //         } else {
-    //             navbar.style.top = '0';
-    //         }
-    //     }
-    // }
+    constructor(){
+        super()
+        this.getValue = this.getValue.bind(this);
+    }
     componentWillMount() {
         this.setState({
             open: false
         })
     }
+    getValue(i) {
+
+        if (i == -1) {
+            this.props.action({
+                moduleName: 'BlogList',
+                goods: {
+                    items: this.props.Blogs.items
+                }
+            })
+        } else {
+            this.props.action({
+                moduleName: 'BlogList',
+                goods: {
+                    items: this.props.Notebooks.items[i].data
+                }
+            })
+        }
+    }
     handleClick() {
         const that = this;
+        const {items} = this.props.Notebooks||{}
         NavSide({
+            data: items,
+            getValue: this.getValue,
             open: function() {
                 that.setState({
                     open: true

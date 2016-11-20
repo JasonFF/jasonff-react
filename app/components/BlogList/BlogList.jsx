@@ -1,15 +1,17 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router';
 import {removeTags} from 'widgets';
+import {connect} from 'react-redux';
 
 const style = require('./BlogList.less');
 
+@connect(state=>({BlogList:state.truck.BlogList}),{})
 export default class BlogList extends Component {
     render() {
-        const {data} = this.props;
+        const {items=[]} = this.props.BlogList||{};
         return <div className={style.blogList}>
             {
-                data.map((item,i)=><BlogBox key={i} data={item}></BlogBox>)
+                items.map((item,i)=><BlogBox key={i} data={item}></BlogBox>)
             }
         </div>
     }
