@@ -4,7 +4,7 @@
 .navside {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: @width;
     height: 100%;
     background-color: #ddd;
@@ -18,11 +18,11 @@
 }
 
 .mask {
-    position: absolute;
+    position: fixed;
     top: 0;
-    right: @width;
+    left: @width;
     bottom: 0;
-    left: 0;
+    right:0;
     background-color: transparent;
     z-index: 2
 }
@@ -33,9 +33,13 @@
 
 .main_open {
     position: relative;
-    margin-left: -1*@width;
+    margin-left: @width;
     transition: all 0.3s ease;
     overflow-x: hidden;
-
-    z-index: 1
+    z-index: 1;
+    :global {
+        #navbar {
+            left: @width;
+        }
+    }
 }

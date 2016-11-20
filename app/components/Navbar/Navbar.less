@@ -1,13 +1,17 @@
 @import '../../theme/default.less';
 
 .container {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     background-color: #333;
     color: #fff;
-    height: 70px;
+    height: 60px;
     border-radius: 10px;
     box-shadow: 0 4px 15px #999;
     border-bottom: 5px solid @yellow;
+    transition: all 0.3s ease;
     .phone({
         border-radius: 0px;
     })
@@ -17,11 +21,10 @@
 }
 
 .logo {
-    display: inline-block;
-    height: 80px;
-    padding: 15px;
+    height: 60px;
+    padding: 10px;
+    text-align: center;
     h1 {
-        padding-top: 8px;
     }
     img {
         width: 100%;
@@ -30,8 +33,8 @@
 }
 .navBtn {
     position: absolute;
-    right: 10px;
-    top: 25px;
+    left: 10px;
+    top: 15px;
     transition: transform 0.3s ease;
     cursor: pointer;
     i {
@@ -40,11 +43,11 @@
     }
 }
 .rotate {
-    transform: rotate(180deg);
+    transform: rotate(90deg);
 }
 .motto {
     position: absolute;
-    top: 70px;
+    top: 60px;
     left: 10px;
     font-size: 2rem;
     color: #333;

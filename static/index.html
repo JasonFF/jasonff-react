@@ -10,9 +10,18 @@
 </head>
 
 <body>
-
-<div id="main"></div>
+    <div id="mobileMain">
+        <div id="main"></div>
+    </div>
+<script type="text/javascript" src="/static/fastclick.js" charset="utf-8"></script>
 <script type="text/javascript" src="/dist/app/vendor.js" charset="utf-8"></script>
 <script type="text/javascript" src="/dist/app/bundle.js" charset="utf-8"></script>
+<script>
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}
+</script>
 </body>
 </html>

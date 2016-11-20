@@ -17,7 +17,7 @@ export default ({data,close,open}) => {
     const navside = preDiv?preDiv:document.createElement('div');
     const navMask = preMask?preMask:document.createElement('div');
     const main = document.getElementById('main');
-    const body = document.body;
+    const mobileMain = document.getElementById('mobileMain');
     const closeNav = () => {
         main.className = '';
         navMask.style.display = 'none';
@@ -32,12 +32,12 @@ export default ({data,close,open}) => {
     navMask.id = 'navMask';
     navMask.style.display = '';
     main.className = style.main_open;
-    body.className = style.body;
+    mobileMain.className = style.body;
 
     navMask.onclick = closeNav;
 
-    document.body.appendChild(navside);
-    body.appendChild(navMask);
+    mobileMain.appendChild(navside);
+    mobileMain.appendChild(navMask);
 
     ReactDOM.render(<NavSide></NavSide>,navside);
 
