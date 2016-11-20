@@ -10,7 +10,7 @@ AddHashPlugin.prototype.apply = function(compiler) {
     var stats = compilation.toJson();
     var bundlejs,maincss;
     var mains = stats.assetsByChunkName.main;
-    if (mains.length) {
+    if (mains) {
         for (var i = 0; i < mains.length; i++) {
           if (/^(bundle).+(js)$/.test(mains[i])) {
             bundlejs = mains[i]
