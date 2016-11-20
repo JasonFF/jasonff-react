@@ -10,7 +10,7 @@ const style = require('./Hello.less');
 export default class Home extends Component {
     render() {
         const {items} = this.props.Blogs||{}
-        return <div className={style.mainContainer+' '+style.container}>
+        return <div className={style.mainContainer}>
             <Navbar></Navbar>
             <div style={{height:'70px'}}></div>
             <BlogList data={items||[]}></BlogList>

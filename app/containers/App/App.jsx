@@ -23,7 +23,7 @@ export default class App extends Component {
     render() {
         const style = require('./App.less');
         return (
-            <div className={style.container}>
+            <div className={style.container} style={{minHeight:`${document.body.clientHeight}`}}>
                 {this.props.children}
             </div>
         )

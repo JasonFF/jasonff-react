@@ -38,6 +38,7 @@
         text-align: center;
         list-style: none;
         border-bottom: 1px solid lighten(@yellowL,10%);
+        cursor: pointer;
         &:first-child {
             border-top: 1px solid lighten(@yellowL,10%)
         }
@@ -58,16 +59,8 @@
     z-index: 2
 }
 
-.body {
-    overflow-x: hidden;
-}
-
 .main_open {
-    position: relative;
     margin-left: @width;
-    transition: all 0.3s ease;
-    overflow-x: hidden;
-    z-index: 1;
     :global {
         #navbar {
             left: @width;

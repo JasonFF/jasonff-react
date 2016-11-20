@@ -57,7 +57,6 @@ export default ({data,close,open,getValue}) => {
     navMask.id = 'navMask';
     navMask.style.display = '';
     main.className = style.main_open;
-    mobileMain.className = style.body;
 
     navMask.onclick = closeNav;
 
