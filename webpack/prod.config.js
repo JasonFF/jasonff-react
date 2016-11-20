@@ -39,8 +39,12 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style','css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!sass?outputStyle=expanded&sourceMap')
+                test: /\.less$/,
+                loader: ExtractTextPlugin.extract('style','css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!less?outputStyle=expanded&sourceMap')
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style','css')
             },
             {
                 test: /\.js(x)?$/,
