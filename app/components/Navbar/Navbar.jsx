@@ -1,38 +1,54 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router'
-import {Col, Icon} from 'antd';
+import {Link} from 'react-router';
+import {NavSide} from 'components';
 
-@connect(state=>({user:state.user}),
-{})
+const style = require('./Navbar.less');
+
+
+@connect(state=>{
+    return {
+        Notebooks: state.truck.Notebooks
+    }
+},{})
 export default class Navbar extends Component {
-  componentWillMount() {
-    this.setState({
-      bg: false
-    })
-  }
-  changeBG() {
-    this.setState({
-      bg: !this.state.bg
-    })
-  }
-  render() {
-    const style = require('./Navbar.scss');
-    const {background} = this.props;
-    const {bg} = this.state;
-    return (
-      <Col xs={0} sm={!bg?24:7} style={{backgroundImage:`url(${background?background:'/static/image/bg-3.jpg'})`}} className={style.nav}>
-        <div className={style.navbar}>
-          <Link to="/" className={style.logo}><img src="/static/image/jf-white.png" alt=""/></Link>
-          <ul className={style.navlist}>
-            <Link to="/index"><Icon type="home"/></Link>
-            <Link to="/home"><Icon type="book"/></Link>
-            <Link to="/newblog"><Icon type="edit"/></Link>
-            <Link to="/login"><Icon type="user"/></Link>
-            <a onClick={()=>this.changeBG()}><Icon type={bg?'heart':'heart-o'}/></a>
-          </ul>
+    componentWillMount() {
+        this.setState({
+            open: false
+        })
+    }
+    handleClick() {
+        const that = this;
+        NavSide({
+            open: function() {
+                that.setState({
+                    open: true
+                })
+            },
+            close: function() {
+                that.setState({
+                    open:false
+                })
+            }
+        })
+    }
+    render() {
+        const {items=[]} = this.props.Notebooks||{};
+        return <div className={style.container}>
+            <div className={style.logo}>
+                <h1>JasonFF</h1>
+                {/* <img src="/static/image/jf-white.png" alt=""/> */}
+            </div>
+            <div className={style.motto}>CHALLENGE EVERYTHING</div>
+            <div onClick={()=>this.handleClick()} className={`${style.navBtn} ${this.state.open?style.rotate:''}`}>
+                <i className='icon'>&#xe67c;</i>
+            </div>
+
+            {/* <ul className={style.nav}>
+                {items.map((item,i)=><li className='animated fadeIn' onClick={()=>this.handleClick()} key={i}>
+                    {item.notebook}
+                </li>)}
+            </ul> */}
         </div>
-      </Col>
-    )
-  }
+    }
 }

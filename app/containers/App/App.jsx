@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {action} from 'actions';
 import {connect} from 'react-redux';
+import animate from '../../theme/animate_u.css';
 
 @connect(state=>({}),{action})
 export default class App extends Component {

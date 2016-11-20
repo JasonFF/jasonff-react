@@ -1,0 +1,53 @@
+@import '../../theme/default.less';
+
+.container {
+    position: relative;
+    background-color: #333;
+    color: #fff;
+    height: 70px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px #999;
+    border-bottom: 5px solid @yellow;
+    .phone({
+        border-radius: 0px;
+    })
+}
+.nav {
+    margin: 0;
+}
+
+.logo {
+    display: inline-block;
+    height: 80px;
+    padding: 15px;
+    h1 {
+        padding-top: 8px;
+    }
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+.navBtn {
+    position: absolute;
+    right: 10px;
+    top: 25px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    i {
+        font-size: 3rem;
+        color: @yellow;
+    }
+}
+.rotate {
+    transform: rotate(180deg);
+}
+.motto {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+    font-size: 2rem;
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 3px 10px #999
+}

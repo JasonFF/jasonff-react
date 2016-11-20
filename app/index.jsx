@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 
 const store = createStore(browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
-const dest = document.getElementById('content');
+const dest = document.getElementById('main');
 
 render(
     <Provider store={store} key='provider'>

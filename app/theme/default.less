@@ -1,0 +1,23 @@
+
+@black: #333;
+@bgColor: #f2f2f2;
+@yellow: #FBBC05;
+@yellowL: lighten(@yellow,20%);
+@yellowD: darken(@yellow,20%);
+
+.mainContainer {
+    width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width:800px){
+    .mainContainer {
+        width: 100%;
+    }
+}
+
+.phone(@rules) {
+    @media (max-width: 800px) {
+        @rules();
+    }
+}

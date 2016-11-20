@@ -45,11 +45,7 @@ module.exports = {
             {
                 test: /\.js(x)?$/,
                 exclude: /(node_modules)/,
-                loader: 'babel', // 'babel-loader' is also a legal name to reference
-                query: {
-                    plugins: ['add-module-exports', "transform-decorators-legacy"],
-                    presets: ['react', 'es2015', 'stage-0']
-                }
+                loader: 'babel'
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192' }
         ]

@@ -38,13 +38,13 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style','css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!less?outputStyle=expanded&sourceMap')
             },
             {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract('style','css')
+            },
+            {
                 test: /\.js(x)?$/,
                 exclude: /(node_modules)/,
-                loader: 'babel', // 'babel-loader' is also a legal name to reference
-                query: {
-                    plugins: ["add-module-exports", "transform-decorators-legacy"],
-                    presets: ['react', 'latest', 'stage-0']
-                }
+                loader: 'babel'
             },
             { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=8192' }
         ]
