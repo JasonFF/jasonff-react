@@ -1,7 +1,5 @@
-require('babel-polyfill');
 var path = require("path");
 var webpack = require("webpack");
-var fs = require('fs');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var AddHashPlugin = require('./plugins/add-hash.js');
 

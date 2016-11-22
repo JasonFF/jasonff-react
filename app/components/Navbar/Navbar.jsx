@@ -1,73 +1,33 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router';
-import {NavSide} from 'components';
 import {action} from 'actions';
 
 const style = require('./Navbar.less');
 
 
-@connect(state=>{
-    return {
-        Notebooks: state.truck.Notebooks,
-        Blogs: state.truck.Blogs
-    }
-},{action})
+@connect(state=>({NavSide:state.truck.NavSide}),{action})
 export default class Navbar extends Component {
-    constructor(){
-        super()
-        this.getValue = this.getValue.bind(this);
-    }
-    componentWillMount() {
-        this.setState({
-            open: false
-        })
-    }
-    getValue(i) {
-
-        if (i == -1) {
-            this.props.action({
-                moduleName: 'BlogList',
-                goods: {
-                    items: this.props.Blogs.items
-                }
-            })
-        } else {
-            this.props.action({
-                moduleName: 'BlogList',
-                goods: {
-                    items: this.props.Notebooks.items[i].data
-                }
-            })
-        }
-    }
     handleClick() {
-        const that = this;
-        const {items} = this.props.Notebooks||{}
-        NavSide({
-            data: items,
-            getValue: this.getValue,
-            open: function() {
-                that.setState({
-                    open: true
-                })
-            },
-            close: function() {
-                that.setState({
-                    open:false
-                })
+        this.props.action({
+            moduleName: 'NavSide',
+            goods: {
+                open: true
             }
         })
     }
     render() {
-        const {items=[]} = this.props.Notebooks||{};
+        let open = false;
+        try {
+            open = this.props.NavSide.open
+        } catch (e) {}
         return <div id="navbar" className={style.container}>
             <div className={style.logo}>
                 <h1>JasonFF</h1>
                 {/* <img src="/static/image/jf-white.png" alt=""/> */}
             </div>
             <div className={style.motto}>CHALLENGE EVERYTHING</div>
-            <div onClick={()=>this.handleClick()} className={`${style.navBtn} ${this.state.open?style.rotate:''}`}>
+            <div onClick={()=>this.handleClick()} className={`${style.navBtn} ${open?style.rotate:''}`}>
                 <i className='icon'>&#xe67b;</i>
             </div>
 
