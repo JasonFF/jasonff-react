@@ -21,7 +21,7 @@ class BlogBox extends Component {
     render() {
         const {data} = this.props;
         return <div className={style.blogBox}>
-            <h2><Link to='/'><i className="icon">&#xe66a;</i>{data.title}</Link></h2>
+            <h2><Link to={`/blog/${data.id}`}><i className="icon">&#xe66a;</i>{data.title}</Link></h2>
             <div className={style.info}>
                 <li><i className="icon">&#xe625;</i>{data.notebook}</li>
                 <li><i className="icon">&#xe63e;</i>{data.notebook}</li>

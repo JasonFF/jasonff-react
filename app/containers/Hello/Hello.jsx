@@ -8,21 +8,21 @@ const style = require('./Hello.less');
 
 @connect(state=>({Blogs: state.truck.Blogs,Notebooks:state.truck.Notebooks}),{action})
 export default class Home extends Component {
-    componentWillReceiveProps(nextProps) {
-        const hasId = !!Object.keys(nextProps.params).length;
-        if (hasId&&nextProps.Notebooks) {
+    componentWillMount() {
+        const hasId = !!Object.keys(this.props.params).length;
+        if (hasId&&this.props.Notebooks) {
             this.props.action({
                 moduleName: 'BlogList',
                 goods: {
-                    items: nextProps.Notebooks.items[nextProps.params.id].data
+                    items: this.props.Notebooks.items[this.props.params.id].data
                 }
             })
         }
-        if (!hasId&&nextProps.Blogs) {
+        if (!hasId&&this.props.Blogs) {
             this.props.action({
                 moduleName: 'BlogList',
                 goods: {
-                    items: nextProps.Blogs.items
+                    items: this.props.Blogs.items
                 }
             })
         }

@@ -10,15 +10,28 @@ import {NavSide} from 'components';
 export default class App extends Component {
     componentWillMount() {
         const that = this;
+        this.setState({
+            a: true
+        })
         this.props.action({
             moduleName: 'Notebooks',
             method: 'GET',
-            url: 'notebook.json'
+            url: 'notebook.json',
+            callback: function(data) {
+                that.setState({
+                    n: true
+                })
+            }
         })
         this.props.action({
             moduleName: 'Blogs',
             method: 'GET',
-            url: 'data.json'
+            url: 'data.json',
+            callback: function(data) {
+                that.setState({
+                    b: true
+                })
+            }
         })
         this.props.action({
             moduleName: "router",
@@ -27,11 +40,12 @@ export default class App extends Component {
     }
     render() {
         const style = require('./App.less');
+        const {n,b} = this.state;
         return (
             <div className={style.container}>
                 <NavSide params={this.props.params}></NavSide>
                 <div id="content" style={{minHeight:`${document.getElementById('main').clientHeight}px`}}>
-                    {this.props.children}
+                    {n&&b&&this.props.children}
                 </div>
             </div>
         )
