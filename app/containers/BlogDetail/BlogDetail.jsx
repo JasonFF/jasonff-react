@@ -16,6 +16,9 @@ export default class BlogDetail extends Component {
             data: data
         })
     }
+    componentDidMount() {
+        UYAN_L.init()
+    }
     render() {
         const {data} = this.state;
         return <div>
@@ -25,8 +28,6 @@ export default class BlogDetail extends Component {
                     data&&<div dangerouslySetInnerHTML={{__html: data.html}}></div>
                 }
             </div>
-
-
             <div id="uyan_frame"></div>
         </div>
     }
