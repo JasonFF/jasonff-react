@@ -4,6 +4,7 @@ import {
 } from 'actions';
 
 const BASE_URL = "http://api.jasonff.top/dist/";
+// const BASE_URL = "http://localhost:5566/dist/";
 
 export function action({
     moduleName,

@@ -1,3 +1,4 @@
+@import './default.less';
 :global {
     @font-face {
         font-family: octicons-link;
@@ -8,7 +9,7 @@
         -webkit-text-size-adjust: 100%;
         color: #333;
         font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        font-size: 16px;
+        font-size: 14px;
         line-height: 1.6;
         word-wrap: break-word;
     }
@@ -39,6 +40,8 @@
     .markdown-body code,
     .markdown-body kbd,
     .markdown-body pre {
+        background-color: rgb(40,44,52);
+        color: #fff;
         font-family: monospace, monospace;
         font-size: 1em;
     }
@@ -346,7 +349,7 @@
     .markdown-body blockquote {
         padding: 0 15px;
         color: #777;
-        border-left: 4px solid #ddd;
+        border-left: 4px solid @yellow;
     }
     .markdown-body blockquote > :first-child {
         margin-top: 0;
@@ -411,7 +414,7 @@
         overflow: auto;
         font-size: 85%;
         line-height: 1.45;
-        background-color: #f7f7f7;
+        background-color: rgb(40,44,52);
         border-radius: 3px;
     }
     .markdown-body .highlight pre {
