@@ -2,9 +2,10 @@ import React from 'react';
 import {IndexRoute, Route} from 'react-router';
 import {
     App,
-    Home,
     Hello,
-    BlogDetail
+    Home,
+    BlogDetail,
+    Starter
   } from 'containers';
 
 export default (store) => {

@@ -21,7 +21,7 @@ export default class Home extends Component {
     const style = require('./Home.less');
     const {go} = this.state;
     return (
-      <div className={style.container}>
+      <div className={style.container} style={{height:`${document.getElementById('content').clientHeight}px`}}>
         <div className={style.top} style={{backgroundImage:'url(/static/image/bgt.jpg)'}}></div>
         <div className={style.bottom} style={{backgroundImage:'url(/static/image/bgb.jpg)'}}></div>
         <div className={`${style.mask} ${go?style.go:''}`}></div>

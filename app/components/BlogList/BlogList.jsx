@@ -40,7 +40,7 @@ export default class BlogList extends Component {
 class BlogBox extends Component {
     render() {
         const {data} = this.props;
-        return <div className={style.blogBox}>
+        return <div className={style.blogBox+ ' animated fadeInUp'}>
             <h2><Link to={`/blog/${data.id}`}><i className="icon">&#xe66a;</i>{data.title}</Link></h2>
             <div className={style.info}>
                 <li><i className="icon">&#xe625;</i>{data.notebook}</li>

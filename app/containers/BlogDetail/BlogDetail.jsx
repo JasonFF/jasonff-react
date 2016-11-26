@@ -24,7 +24,7 @@ export default class BlogDetail extends Component {
         return <div>
             <Navbar type="blog"></Navbar>
             <div style={{height:'80px'}}></div>
-            <div className="markdown-body" style={{padding: '0 10px'}}>
+            <div className="markdown-body animated fadeInRight" style={{padding: '0 10px'}}>
                 {
                     data&&<div dangerouslySetInnerHTML={{__html: data.html}}></div>
                 }

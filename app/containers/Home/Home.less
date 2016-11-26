@@ -1,55 +1,57 @@
 @import '../../theme/default.less';
-
 .container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
-
 .top {
-  height: 50%;
-  background: 50% 100%/cover no-repeat;
+    height: 50%;
+    background: 50% 100%/cover no-repeat;
 }
 .bottom {
-  height: 50%;
-  background: 50% 0%/cover no-repeat;
+    height: 50%;
+    background: 50% 0%/cover no-repeat;
 }
-
 .mask {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 0;
-  height: 0;
-  background-color: #f3f4f5;
-  transition: all 1s ease;
-  border-radius: 50%;
-  &.go {
-    width: 2000px;
-    height: 2000px;
-    margin-left: -1000px;
-    margin-top: -1000px;
-    background-color: rgba(255,255,255,1)
-  }
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    background-color: #f3f4f5;
+    transition: all 1s ease;
+    border-radius: 50%;
+    &.go {
+        width: 2000px;
+        height: 2000px;
+        margin-left: -1000px;
+        margin-top: -1000px;
+        background-color: rgba(255,255,255,1);
+    }
 }
-
 .logo {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  top: 50%;
-  left: 50%;
-  margin-left: -75px;
-  margin-top: -75px;
-  background: center/cover;
-  border-radius: 75px;
-  border: 3px solid #000;
-  box-shadow: 0 0 10px #fff;
-  transition: all 0.5s ease;
-  cursor: pointer;
-  &:hover {
-    box-shadow: 0 0 30px #fff;
-    border: 3px solid #fff;
-  }
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -75px;
+    background: center/cover;
+    border-radius: 75px;
+    border: 3px solid #000;
+    box-shadow: 0 0 10px #fff;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    &:hover {
+        box-shadow: 0 0 30px #fff;
+        border: 3px solid #fff;
+    }
+    .phone({
+        width: 100px;
+        height: 100px;
+        margin-left: -50px;
+        margin-top: -50px;
+    });
 }
