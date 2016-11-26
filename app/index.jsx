@@ -10,9 +10,20 @@ const store = createStore(browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
 const dest = document.getElementById('main');
 
+function handleUpdate() {
+    let {action} = this.state.location;
+    if (action === 'PUSH'|| action === 'REPLACE') {
+        if (/admin/.test(this.state.location.pathname)) {
+            return false
+        }
+        window.scrollTo(0, 0);
+    }
+}
+
+
 render(
     <Provider store={store} key='provider'>
-        <Router history={browserHistory}>
+        <Router onUpdate={handleUpdate} history={browserHistory}>
             {routes(store)}
         </Router>
     </Provider>,
