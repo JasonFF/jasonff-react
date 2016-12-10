@@ -3,7 +3,7 @@ import {action} from 'actions';
 import {connect} from 'react-redux';
 import animate from '../../theme/animate_u.css';
 import {withRouter} from 'react-router';
-import {NavSide} from 'components';
+import {NavSide,LogoBtn} from 'components';
 
 @connect(state=>({}),{action})
 @withRouter
@@ -43,6 +43,7 @@ export default class App extends Component {
         const {n,b} = this.state;
         return (
             <div className={style.container}>
+                <LogoBtn></LogoBtn>
                 <NavSide params={this.props.params}></NavSide>
                 <div id="content" style={{minHeight:`${document.getElementById('main').clientHeight}px`}}>
                     {n&&b&&this.props.children}

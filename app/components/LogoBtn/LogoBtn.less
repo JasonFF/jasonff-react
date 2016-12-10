@@ -1,0 +1,20 @@
+@import '../../theme/default.less';
+
+.logoBtn {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    background: url("/static/image/jf.png") center/cover no-repeat;
+    border-radius: 25px;
+    z-index: 1;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    box-shadow: 0 0 5px #333;
+    transition: transform 0.3s ease;
+    &.active {
+        transform: rotate(360deg);
+    }
+}

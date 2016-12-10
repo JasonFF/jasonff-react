@@ -1,19 +1,18 @@
 @import '../../theme/default.less';
 
 .container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: relative;
+    width: 800px;
     background-color: #333;
     color: #fff;
     height: 60px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px #999;
-    border-bottom: 5px solid @yellow;
+    border-radius: 0px;
+    // box-shadow: 0 2px 15px #bbb;
+    border-bottom: 3px solid @yellow;
     transition: all 0.3s linear;
     z-index: 99;
     .phone({
+        width: 100%;
         border-radius: 0px;
     })
 }
@@ -48,10 +47,10 @@
 }
 .motto {
     position: absolute;
-    top: 60px;
+    top: 55px;
     left: 10px;
     font-size: 2rem;
     color: #333;
     font-weight: bold;
-    text-shadow: 0 3px 10px #999
+    // text-shadow: 0 3px 10px #999
 }

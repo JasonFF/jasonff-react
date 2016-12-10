@@ -21,7 +21,7 @@ export default class BlogDetail extends Component {
     }
     render() {
         const {data} = this.state;
-        return <div>
+        return <div className={style.mainContainer}>
             <Navbar type="blog"></Navbar>
             <div style={{height:'80px'}}></div>
             <div className="markdown-body animated fadeInRight" style={{padding: '0 10px'}}>
