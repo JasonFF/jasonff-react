@@ -16,9 +16,7 @@ export default class LogoBtn extends Component {
         let open = false;
         try {
             open = this.props.NavSide.open
-        } catch (e) {
-            console.log(e)
-        }
+        } catch (e) {}
         const style = require('./LogoBtn.less');
         return <button onClick={()=>this.handleClick()} className={style.logoBtn+` ${open?style.active:''}`}>
         </button>
