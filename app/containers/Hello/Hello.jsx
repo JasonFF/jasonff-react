@@ -10,7 +10,7 @@ export default class Home extends Component {
     render() {
         return <div className={style.mainContainer+' '+style.container}>
             <Navbar type="notebook"></Navbar>
-            <div style={{height:'40px'}}></div>
+            <div style={{height:'30px'}}></div>
             <BlogList key={JSON.stringify(this.props.params)} params={this.props.params}></BlogList>
         </div>
     }
