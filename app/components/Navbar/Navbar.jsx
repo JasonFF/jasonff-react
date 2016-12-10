@@ -26,7 +26,7 @@ export default class Navbar extends Component {
                 <h1>JasonFF</h1>
                 {/* <img src="/static/image/jf-white.png" alt=""/> */}
             </div>
-            <div className={style.motto}>CHALLENGE EVERYTHING</div>
+            {/* <div className={style.motto}>CHALLENGE EVERYTHING</div> */}
             {/* <div onClick={()=>this.handleClick()} className={`${style.navBtn} ${open?style.rotate:''}`}>
                 <i className='icon'>&#xe67b;</i>
             </div> */}

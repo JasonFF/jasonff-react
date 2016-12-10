@@ -23,7 +23,6 @@ export default class BlogDetail extends Component {
         const {data} = this.state;
         return <div className={style.mainContainer}>
             <Navbar type="blog"></Navbar>
-            <div style={{height:'30px'}}></div>
             <div className="markdown-body animated fadeInRight" style={{padding: '0 10px'}}>
                 {
                     data&&<div dangerouslySetInnerHTML={{__html: data.html}}></div>
