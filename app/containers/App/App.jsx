@@ -43,8 +43,8 @@ export default class App extends Component {
         const {n,b} = this.state;
         return (
             <div className={style.container}>
-                <LogoBtn></LogoBtn>
-                <NavSide params={this.props.params}></NavSide>
+                {window.location.pathname!="/"&&<LogoBtn></LogoBtn>}
+                {window.location.pathname!="/"&&<NavSide params={this.props.params}></NavSide>}
                 <div id="content" style={{minHeight:`${document.getElementById('main').clientHeight}px`}}>
                     {n&&b&&this.props.children}
                 </div>

@@ -5,7 +5,8 @@ import {
     Hello,
     Home,
     BlogDetail,
-    Starter
+    Starter,
+    AboutMe
   } from 'containers';
 
 export default (store) => {
@@ -15,6 +16,7 @@ export default (store) => {
       <Route path="/hello" component={Hello}></Route>
       <Route path="/notebook/:id" component={Hello}></Route>
       <Route path="/blog/:id" component={BlogDetail}></Route>
+      <Route path="aboutme" component={AboutMe}></Route>
     </Route>
   );
 };
