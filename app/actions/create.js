@@ -22,6 +22,7 @@ export default function createStore(history, client, data) {
   }
 
   const reducer = require('./reducer');
+  console.log("reducer is ", reducer)
   const store = finalCreateStore(reducer, data);
 
   if (__DEVELOPMENT__ && module.hot) {
