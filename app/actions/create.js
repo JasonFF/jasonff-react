@@ -22,14 +22,28 @@ export default function createStore(history, client, data) {
   }
 
   const reducer = require('./reducer');
-  console.log("reducer is ", reducer)
   const store = finalCreateStore(reducer, data);
-
-  if (__DEVELOPMENT__ && module.hot) {
-    module.hot.accept('./reducer', () => {
-      store.replaceReducer(require('./reducer'));
-    });
-  }
-
+  // const _store = Object.assign({},store);
+  // _store.getState = function() {
+  //     const __s = store.getState();
+  //     const truck = __s.truck;
+  //     const __k = Object.keys(truck);
+  //     __k.forEach((item,i)=>{
+  //         __s[item] = truck[item]
+  //     })
+  //     console.log(__s)
+  //     return __s
+  // }
+  // _store.liftedStore.getState = function() {
+  //     const __s = store.getState();
+  //     const truck = __s.truck;
+  //     const __k = Object.keys(truck);
+  //     __k.forEach((item,i)=>{
+  //         __s[item] = truck[item]
+  //     })
+  //     console.log(__s)
+  //     return __s
+  // }
+  // console.log(store.liftedStore)
   return store;
 }
