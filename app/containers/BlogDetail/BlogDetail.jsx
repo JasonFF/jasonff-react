@@ -11,13 +11,18 @@ const style = require('./BlogDetail.less');
 export default class BlogDetail extends Component {
     componentWillMount() {
         const {items} = this.props.Blogs;
+        debugger
         const data = items[idToKey(this.props.params.id,items)];
         this.setState({
             data: data
         })
     }
     componentDidMount() {
-        UYAN_L.init()
+        if (UYAN_L) {
+            UYAN_L.init()
+        } else {
+            UYAN.init()
+        }
     }
     render() {
         const {data} = this.state;

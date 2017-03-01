@@ -52,7 +52,6 @@ export default class NavSide extends Component {
         }
     }
     render() {
-        console.log('navside render')
         const {items} = this.props.Notebooks||{};
         let index = this.props.params.id;
         if (index===undefined) {
