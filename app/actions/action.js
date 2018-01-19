@@ -3,7 +3,7 @@ import {
     truck
 } from 'actions';
 
-const BASE_URL = "http://api.jasonff.top/dist/";
+const BASE_URL = "https://rawgit.com/JasonFF/jasonff-api/master/dist/";
 // const BASE_URL = "http://localhost:5566/dist/";
 
 export function action({
